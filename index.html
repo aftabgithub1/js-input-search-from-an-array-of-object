@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: cadetblue;
+        }
+        #root {
+            min-width: 100%;
+            max-width: 600px;
+            margin: auto
+        }
+        .title {
+            text-align: center;
+            color: white
+        }
+        .card {
+            background-color: whitesmoke;
+            margin: 10px 20px;
+            padding: 0 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+        .card:focus {
+            outline: 2px solid aqua
+        }
+        label[for=search] {
+            position: absolute;
+            left: -99999px;
+        }
+        input {
+            width: 100%;
+            padding: 10px 0;
+            border: none
+        }
+        input:focus {
+            outline: none
+        }
+        ul {
+            padding-left: 0;
+        }
+        li {
+            list-style-type: none;
+            margin: 0;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <template id="post-template">
+            <div class="card">
+                <h2 class="name"></h2>
+                <p class="desp"></p>
+            </div>
+        </template>
+
+        <h1 class="title">My Nieces and Nephews</h1>
+
+        <div class="card">
+            <form id="search-form">
+                <label for="search">Search</label>
+                <input type="search" id="search" placeholder="Search name">
+            </form>
+        </div>
+
+        <div id="all-posts"></div>
+
+        
+    </div>
+
+
+    <script>
+        "use strict"
+        const data = [
+            {name: "Afra", desp: "My first niece."},
+            {name: "Ayaana", desp: "My second and favorite niece."},
+            {name: "Adiyat", desp: "My first Nephew."},
+            {name: "Iqra", desp: "My third niece."},
+            {name: "Mehmed", desp: "My second Nephew."}
+        ]
+        const allPosts = document.getElementById('all-posts')
+        const search = document.getElementById('search')
+        const templateX = document.getElementById('post-template').content
+        let myNiblings = []
+
+        myNiblings = data.map(({name, desp}) => {
+            const card = document.importNode(templateX, true).children[0]
+            card.querySelector('.name').textContent = name
+            card.querySelector('.desp').textContent = desp
+            allPosts.append(card)
+            return {name, desp, element: card}
+        })
+
+        search.addEventListener('input', e => {
+            const value = e.target.value.toLowerCase()
+            myNiblings.filter(({name, desp, element}) => {
+                const isVisible = 
+                    name.toLowerCase().includes(value) || 
+                    desp.toLowerCase().includes(value)
+                element.classList.toggle('hide', !isVisible)
+            })
+        })
+        
+    </script>
+</body>
+</html>
