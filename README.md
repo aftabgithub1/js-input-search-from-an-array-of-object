@@ -1,3 +1,3 @@
-## Cilck the link below to visit the published version of this project
+## JavaScript input search from an array of objects
 
-(https://aftabgithub1.github.io/js-input-search-from-an-array-of-object/)
+[Visit the project site](https://aftabgithub1.github.io/js-input-search-from-an-array-of-object/)
