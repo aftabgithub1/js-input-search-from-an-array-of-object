@@ -1,3 +1,3 @@
-## JavaScript input search from an array of objects
+## JavaScript input search from a json api
 
-[Test the project site](https://aftabgithub1.github.io/js-input-search-from-an-array-of-object/)
+<a href="https://aftabgithub1.github.io/js-input-search-from-an-array-of-object/" target="_blank">Test the project site</a>
